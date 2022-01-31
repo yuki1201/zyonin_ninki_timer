@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+<title>カウントダウン</title>
+
+<script>
+var t1,t2,timer;
+var d1,d2,oneday=86400000;
+
+function update() {
+  var d = new Date();
+  var r1 = new Date(d1-d);
+  var r2 = new Date(d2-d);
+  if (r1 <= 0) {
+  	t1.innerHTML = "一年間お疲れさまでした！";	
+  } else {
+  	var s = (r1 % (60*1000)) / 1000;
+	t1.innerHTML = Math.floor(r1 / oneday) + '日' + ('0'+Math.floor((r1 % oneday) / (60*60*1000))).substr(-2)+ ":" + ("0"+Math.floor(r1 % (60*60*1000) / (60*1000))).substr(-2) + ":" + (s<10 ? "0" : "") + s;	
+  }
+
+}
+                         
+
+function setup() {
+  t1=document.getElementById("b4"); // 卒論
+  d1 = new Date("2022-02-01T00:00:00+09:00");
+　timer = setInterval('update()', 1);
+}
+
+</script>
+<style type="text/css">
+b {
+	color: red;
+	font-size: 80pt;
+}
+</style>
+</head>
+<body onload="setup();">
+<h1>常任役員任期満了カウントダウン!</h1>
+<p>
+任期満了まであと
+</p>
+<b id="b4">
+　
+</b>
+</body>
+</html>
